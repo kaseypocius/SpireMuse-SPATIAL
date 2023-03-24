@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 3,
-			"revision" : 0,
+			"minor" : 5,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 484.0, 100.0, 1182.0, 691.0 ],
+		"rect" : [ 484.0, 100.0, 1176.0, 694.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 11.0,
@@ -39,6 +39,106 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-26",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 250.000008106231689, 939.0, 123.0, 19.0 ],
+					"text" : "if $i1 == 1 then 0 else 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-25",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 523.000008106231689, 796.0, 123.0, 19.0 ],
+					"text" : "if $i1 == 3 then 0 else 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 250.000008106231689, 963.0, 57.0, 19.0 ],
+					"text" : "hidden $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-22",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 523.000008106231689, 824.0, 57.0, 19.0 ],
+					"text" : "hidden $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 478.500008106231689, 871.0, 85.0, 19.0 ],
+					"text" : "mc.mixdown~ 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"channels" : 4,
+					"id" : "obj-18",
+					"lastchannelcount" : 4,
+					"maxclass" : "mc.live.gain~",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "multichannelsignal", "", "float", "list" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 478.500008106231689, 911.0, 48.0, 136.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1081.500008106231689, 440.0, 48.0, 243.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "mc.live.gain~[2]",
+							"parameter_mmax" : 6.0,
+							"parameter_mmin" : -70.0,
+							"parameter_shortname" : "mc.live.gain~[1]",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 4
+						}
+
+					}
+,
+					"varname" : "mc.live.gain~[2]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 478.500008106231689, 1085.0, 87.0, 19.0 ],
+					"text" : "mc.dac~ 1 2 3 4"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-15",
 					"maxclass" : "newobj",
@@ -117,7 +217,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-11",
-					"items" : [ "OFF", ",", "STEREO", ",", 16, "CHANNEL" ],
+					"items" : [ "OFF", ",", "STEREO", ",", 16, "CHANNEL", ",", "QUAD" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -135,7 +235,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 201.500008106231689, 964.0, 239.0, 19.0 ],
+					"patching_rect" : [ 142.000008106231689, 1042.0, 239.0, 19.0 ],
 					"text" : "mc.dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
 				}
 
@@ -145,16 +245,17 @@
 					"id" : "obj-9",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "multichannelsignal", "multichannelsignal" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "multichannelsignal", "multichannelsignal", "multichannelsignal" ],
 					"patching_rect" : [ 89.500008106231689, 801.0, 131.0, 19.0 ],
-					"text" : "mc.gate~ 2 1 @chans 16"
+					"text" : "mc.gate~ 3 1 @chans 16"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"channels" : 2,
+					"hidden" : 1,
 					"id" : "obj-4",
 					"lastchannelcount" : 2,
 					"maxclass" : "mc.live.gain~",
@@ -164,7 +265,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 89.500008106231689, 863.0, 48.0, 136.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1073.500008106231689, 440.0, 62.0, 210.0 ],
+					"presentation_rect" : [ 1081.500008106231689, 440.0, 48.0, 243.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "mc.live.gain~[1]",
@@ -285,7 +386,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "multichannelsignal", "jit_matrix" ],
-					"patching_rect" : [ 142.000008106231689, 621.0, 132.0, 19.0 ],
+					"patching_rect" : [ 142.000008106231689, 670.0, 132.0, 19.0 ],
 					"text" : "SM_model_MC my_spire",
 					"varname" : "int-FO-model"
 				}
@@ -301,7 +402,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"order" : 0,
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"order" : 1,
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
+					"order" : 2,
 					"source" : [ "obj-11", 0 ]
 				}
 
@@ -352,6 +470,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 1 ],
 					"midpoints" : [ 46.5, 51.5, 407.833341439565004, 51.5 ],
 					"order" : 0,
@@ -365,6 +497,34 @@
 					"midpoints" : [ 46.5, 59.0, 45.0, 59.0, 45.0, 656.0, 264.500008106231689, 656.0 ],
 					"order" : 1,
 					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-22", 0 ],
+					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-24", 0 ],
+					"source" : [ "obj-26", 0 ]
 				}
 
 			}
@@ -430,6 +590,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-9", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-7", 0 ],
 					"source" : [ "obj-9", 0 ]
 				}
@@ -438,6 +605,7 @@
  ],
 		"parameters" : 		{
 			"obj-1" : [ "mc.live.gain~", "mc.live.gain~", 0 ],
+			"obj-18" : [ "mc.live.gain~[2]", "mc.live.gain~[1]", 0 ],
 			"obj-3::obj-77" : [ "live.text[13]", "live.text", 0 ],
 			"obj-4" : [ "mc.live.gain~[1]", "mc.live.gain~[1]", 0 ],
 			"obj-6::obj-180::obj-53" : [ "number[17]", "number", 0 ],
@@ -451,76 +619,90 @@
 		"dependency_cache" : [ 			{
 				"name" : "History.txt",
 				"bootpath" : "~/Documents/Max 8/Packages/bach",
-				"patcherrelativepath" : "../../Max 8/Packages/bach",
+				"patcherrelativepath" : "../../../Max 8/Packages/bach",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "OMax.yin+.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/abstractions/Somax",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/abstractions/Somax",
 				"patcherrelativepath" : "../abstractions/Somax",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "SM-mono-poly~_MC.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/Run",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/Run",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "SM_feedback.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/Run",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/Run",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "SM_model_MC.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/Run",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/Run",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "SM_negotiation.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/Run",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/Run",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "SM_startstop.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/Run",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/Run",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "SM_view.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/Run",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/Run",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
+				"name" : "SOM-nodes.txt",
+				"bootpath" : "~/Dropbox/3tube_synthcorpus/data",
+				"patcherrelativepath" : "../../../../Dropbox/3tube_synthcorpus/data",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "VMM-training-SOM-seq.txt",
+				"bootpath" : "~/Dropbox/3tube_synthcorpus/data",
+				"patcherrelativepath" : "../../../../Dropbox/3tube_synthcorpus/data",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "Yin+.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/abstractions/Somax",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/abstractions/Somax",
 				"patcherrelativepath" : "../abstractions/Somax",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "audio2chroma.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/abstractions/Somax",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/abstractions/Somax",
 				"patcherrelativepath" : "../abstractions/Somax",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "bc.autoname.js",
-				"bootpath" : "~/Documents/SpireMuse/abstractions/externals",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/abstractions/externals",
 				"patcherrelativepath" : "../abstractions/externals",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -538,13 +720,38 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "clusters.txt",
+				"bootpath" : "~/Dropbox/3tube_synthcorpus/data",
+				"patcherrelativepath" : "../../../../Dropbox/3tube_synthcorpus/data",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "data-concatenated.txt",
+				"bootpath" : "~/Dropbox/3tube_synthcorpus/data",
+				"patcherrelativepath" : "../../../../Dropbox/3tube_synthcorpus/data",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "factorOracle.mxo",
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "ircamdescriptor~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "pctm.txt",
+				"bootpath" : "~/Dropbox/3tube_synthcorpus/data",
+				"patcherrelativepath" : "../../../../Dropbox/3tube_synthcorpus/data",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "pipo-VA-online-interactive-v01~.maxpat",
 				"bootpath" : "~/Documents/SpireMuse/abstractions/VA_estimation",
-				"patcherrelativepath" : "../abstractions/VA_estimation",
+				"patcherrelativepath" : "../../../SpireMuse/abstractions/VA_estimation",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -553,21 +760,35 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "pitches.txt",
+				"bootpath" : "~/Dropbox/3tube_synthcorpus/data",
+				"patcherrelativepath" : "../../../../Dropbox/3tube_synthcorpus/data",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "sadam.stat.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "somax.audioinfluencer.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/abstractions/Somax",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/abstractions/Somax",
 				"patcherrelativepath" : "../abstractions/Somax",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "sr.maxpat",
-				"bootpath" : "~/Documents/SpireMuse/abstractions/Somax",
+				"bootpath" : "~/Documents/GitHub/SpireMuse-SPATIAL/abstractions/Somax",
 				"patcherrelativepath" : "../abstractions/Somax",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "stats.txt",
+				"bootpath" : "~/Dropbox/3tube_synthcorpus/data",
+				"patcherrelativepath" : "../../../../Dropbox/3tube_synthcorpus/data",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
